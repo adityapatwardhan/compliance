@@ -196,6 +196,25 @@ For full features see:  https://github.com/isaacs/minimatch#features
         useMinimatch: true
 ```
 
+### ESRP Authenticode preview certificate
+
+This example signs `dll` and `psm1` files recursively and `psd1` files in the root of the `buildOutputPath`, using minimatch.
+
+For full features see:  https://github.com/isaacs/minimatch#features
+
+```yaml
+  - template: EsrpSign.yml@ComplianceRepo
+      parameters:
+        buildOutputPath: $(signSrcPath)
+        signOutputPath: $(signOutPath)
+        certificateId: "CP-460906"
+        pattern: |
+          **\*.dll
+          *.psd1
+          **\*.psm1
+        useMinimatch: true
+```
+
 ### ESRP RPM example
 
 This example signs `dll` `psd1` and `psm1` files recursively, using minimatch.
